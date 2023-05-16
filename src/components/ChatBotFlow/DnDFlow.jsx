@@ -8,9 +8,9 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 
-import Sidebar from '../Sidebar';
+import Sidebar from './Sidebar';
 
-import '../index.css';
+import '../../index.css';
 
 const initialNodes = [
   {
@@ -83,7 +83,7 @@ const DnDFlow = () => {
             <Controls />
           </ReactFlow>
         </div>
-        <Sidebar />
+        {/* <Sidebar /> */}
       </ReactFlowProvider>
     </div>
   );
