@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
 import Typography from '@mui/material/Typography';
+import { customBoxShadow } from "../lib/utils";
 
 function MessageNode({ data }) {
   console.log(data);
@@ -19,7 +20,7 @@ function MessageNode({ data }) {
           // border : "2px solid black",
           // borderRadius : "10px",
           alignContent: 'stretch',
-          fontSize : "9px"
+          fontSize : "9px",
          }}
         container
         // padding={"10px 20px"}
@@ -34,8 +35,11 @@ function MessageNode({ data }) {
             justifyContent: 'space-between',
             px : 1,
             alignItems : "center",
+            boxShadow : customBoxShadow,
+
           }}
           xs={12}
+          item
           container
         >
           <Box sx={{ display: 'inline-flex', alignItems : "center" }}>
@@ -59,8 +63,11 @@ function MessageNode({ data }) {
             // justifyContent: 'space-between',
             px : 1,
             alignItems : "center",
+            boxShadow : customBoxShadow,
+
           }}
           xs={12}
+          item
           container
         >
           {data.name}

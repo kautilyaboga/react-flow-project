@@ -10,7 +10,6 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import MessageNode from '../../components/MessageNode';
-
 import '../../index.css';
 
 const initialNodes = [
@@ -37,7 +36,17 @@ const DnDFlow = () => {
 
   // const nodeTypes = useMemo(() => ({ messageNode: MessageNode }), []);
 
-  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
+  console.log(edges);
+
+  //  This function call connects the nodes with edges.
+  const onConnect = useCallback((params) => {
+    console.log(params);
+    if (edges?.length && edges?.some((edge)=> edge?.source === params?.source)) {
+      console.log("Connection Already Exists");
+      return () => {}
+    }
+    return setEdges((eds) => addEdge(params, eds)), []
+  });
 
   const onDragOver = useCallback((event) => {
     event.preventDefault();
