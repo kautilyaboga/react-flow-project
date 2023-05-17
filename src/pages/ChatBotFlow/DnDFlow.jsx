@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useMemo } from 'react';
 import ReactFlow, {
   ReactFlowProvider,
   addEdge,
@@ -9,18 +9,22 @@ import ReactFlow, {
   BackgroundVariant
 } from 'reactflow';
 import 'reactflow/dist/style.css';
-
+import MessageNode from '../../components/MessageNode';
 
 import '../../index.css';
 
 const initialNodes = [
   {
     id: '1',
-    type: 'input',
-    data: { label: 'input node' },
+    type: 'messageNode',
+    data: { name: 'input node',job : 'default node' },
     position: { x: 250, y: 5 },
   },
 ];
+
+const nodeTypes = {
+  messageNode: MessageNode,
+};
 
 let id = 0;
 const getId = () => `dndnode_${id++}`;
@@ -30,6 +34,8 @@ const DnDFlow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
+
+  // const nodeTypes = useMemo(() => ({ messageNode: MessageNode }), []);
 
   const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
 
@@ -58,7 +64,7 @@ const DnDFlow = () => {
         id: getId(),
         type,
         position,
-        data: { label: `${type} node` },
+        data: { name: `${type}` },
       };
 
       setNodes((nds) => nds.concat(newNode));
@@ -79,6 +85,7 @@ const DnDFlow = () => {
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
+            nodeTypes = {nodeTypes}
             fitView
           >
             <Background variant={BackgroundVariant.Dots} />
