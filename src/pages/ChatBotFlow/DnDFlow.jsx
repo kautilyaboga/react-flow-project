@@ -5,10 +5,11 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   Controls,
+  Background,
+  BackgroundVariant
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 
-import Sidebar from './Sidebar';
 
 import '../../index.css';
 
@@ -80,6 +81,7 @@ const DnDFlow = () => {
             onDragOver={onDragOver}
             fitView
           >
+            <Background variant={BackgroundVariant.Dots} />
             <Controls />
           </ReactFlow>
         </div>

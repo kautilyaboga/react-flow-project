@@ -1,8 +1,8 @@
 import React from 'react';
 // import ReactFlow from 'reactflow';
-import DnDFlow from './components/ChatBotFlow/DnDFlow';
+import DnDFlow from './pages/ChatBotFlow/DnDFlow';
 import 'reactflow/dist/style.css';
-import MessagesFlow from './pages/MessagesFlow';
+import MessagesFlow from './pages/ChatBotFlow/MessagesFlow';
 
 // const initialNodes = [
 //   { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
@@ -14,8 +14,7 @@ import MessagesFlow from './pages/MessagesFlow';
 export default function App() {
   return (
     <MessagesFlow>
-      <div style={{ width: '100vw', height: '100vh' }}>
-      {/* <div> */}
+      <div style={{ width: '100vw', height: '85vh' }}>
         <DnDFlow/>
       </div>
     </MessagesFlow>
