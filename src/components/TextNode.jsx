@@ -7,10 +7,12 @@ import IconButton from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
 import Typography from '@mui/material/Typography';
-import { customBoxShadow } from "../lib/utils";
+import { customBoxShadow } from "../Data/utils";
 
-function MessageNode({ data }) {
+
+function TextNode({ data }) {
   console.log(data);
+
   return (
     <React.Fragment>
       <Grid
@@ -80,4 +82,4 @@ function MessageNode({ data }) {
   );
 }
 
-export default memo(MessageNode);
+export default memo(TextNode);

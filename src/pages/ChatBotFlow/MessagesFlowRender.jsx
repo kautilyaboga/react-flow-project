@@ -6,47 +6,55 @@ import ReactFlow, {
   useEdgesState,
   Controls,
   Background,
-  BackgroundVariant
+  BackgroundVariant,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
-import MessageNode from '../../components/MessageNode';
+import TextNode from '../../components/TextNode';
 import '../../index.css';
+import Notification from '../../components/Notification';
+import NodeTypes from '../../Data/Constants/NodeTypes';
 
-const initialNodes = [
-  {
-    id: '1',
-    type: 'messageNode',
-    data: { name: 'input node',job : 'default node' },
-    position: { x: 250, y: 5 },
-  },
-];
 
 const nodeTypes = {
-  messageNode: MessageNode,
+  "textNode": TextNode,
 };
 
 let id = 0;
 const getId = () => `dndnode_${id++}`;
 
-const DnDFlow = () => {
+
+const MessagesFlowRender = ({nodes, setNodes, onNodesChange, setNodeEditData, setNodeEditMode}) => {
   const reactFlowWrapper = useRef(null);
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  // const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
+  const [notificationOpen, setNotificationOpen] = useState(false);
+  const [notificationData, setNotificationData] = useState({
+    severity : "",
+    message : '',
+  });
 
-  // const nodeTypes = useMemo(() => ({ messageNode: MessageNode }), []);
+  // const nodeTypes = useMemo(() => ({ messageNode: TextNode }), []);
 
-  console.log(edges);
+  // console.log(edges);
+  // console.log(nodes);
+  // console.log(reactFlowInstance);
 
   //  This function call connects the nodes with edges.
   const onConnect = useCallback((params) => {
     console.log(params);
     if (edges?.length && edges?.some((edge)=> edge?.source === params?.source)) {
-      console.log("Connection Already Exists");
+      console.log("Source Connection Already Exists");
+      setNotificationOpen(true)
+      setNotificationData({
+        severity : "error",
+        message : 'Source Connection Already Exists',
+      })
       return () => {}
     }
     return setEdges((eds) => addEdge(params, eds)), []
   });
+  
 
   const onDragOver = useCallback((event) => {
     event.preventDefault();
@@ -69,19 +77,43 @@ const DnDFlow = () => {
         x: event.clientX - reactFlowBounds.left,
         y: event.clientY - reactFlowBounds.top,
       });
-      const newNode = {
-        id: getId(),
-        type,
-        position,
-        data: { name: `${type}` },
-      };
+
+      let newNode
+      if (type === NodeTypes?.text) {
+        newNode = {
+          id: getId(),
+          type,
+          position,
+          data: { name: `Write Some Message` },
+        };
+      }
 
       setNodes((nds) => nds.concat(newNode));
     },
     [reactFlowInstance]
   );
 
+
+  function onSelectionChange(params) {
+    console.log(params?.nodes);
+    // console.log(params?.edges);
+    if (params?.nodes?.length) {
+      setNodeEditMode(true)
+      setNodeEditData(params?.nodes?.at(-1))
+    }
+    else{
+      setNodeEditMode(false)
+      // setNodeEditData({})
+    }
+  } 
+
+  function onSelect(params) {
+    console.log(params);
+  }
+
+
   return (
+    <React.Fragment>
     <div className="dndflow">
       <ReactFlowProvider>
         <div className="reactflow-wrapper" ref={reactFlowWrapper}>
@@ -96,15 +128,24 @@ const DnDFlow = () => {
             onDragOver={onDragOver}
             nodeTypes = {nodeTypes}
             fitView
+            onSelectionChange = {onSelectionChange}
+            onSelect={onSelect}
           >
             <Background variant={BackgroundVariant.Dots} />
             <Controls />
           </ReactFlow>
         </div>
-        {/* <Sidebar /> */}
       </ReactFlowProvider>
     </div>
+
+    <Notification
+      open={notificationOpen}
+      setOpen ={setNotificationOpen}
+      severity ={notificationData?.severity}
+      message ={notificationData?.message}
+    />
+    </React.Fragment>
   );
 };
 
-export default DnDFlow;
+export default MessagesFlowRender;
