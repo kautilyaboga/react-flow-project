@@ -2,6 +2,7 @@ import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import ButtonMUI from "../../components/ButtonMUI";
 import Button from "@mui/material/Button";
 
 export default function NavBar({ nodes, edges, setNotificationData, setNotificationOpen }) {
@@ -30,7 +31,7 @@ export default function NavBar({ nodes, edges, setNotificationData, setNotificat
     if (!isValid) {
       setNotificationData({
         severity : "error",
-        message : 'Cannot Save Flow',
+        message : 'Cannot Save Flow. More than one nodes have empty target handles',
       })
       setNotificationOpen(true)
       return
@@ -49,20 +50,18 @@ export default function NavBar({ nodes, edges, setNotificationData, setNotificat
       position="fixed"
       // Usefull if we want nav bar not coming onto side nav
       // sx={{ width: `calc(100% - ${drawerWidth}px)`, mr: `${drawerWidth}px` }}
-      sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, background: "#535353" }}
+      sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, background: "#2E4F4F" }}
     >
       <Toolbar sx={{ justifyContent: "space-between" }}>
         <Typography variant="h6" noWrap component="div">
           Chatbot Flow Builder
         </Typography>
-        <Button 
-          variant="contained" 
-          sx={{ borderRadius: "20px" }} 
-          size="small"
+
+        <ButtonMUI
           onClick={onSaveChangesSubmit}
-          >
-          Save Changes
-        </Button>
+          name = "Save Changes"
+        />
+
       </Toolbar>
     </AppBar>
   );

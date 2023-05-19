@@ -91,7 +91,7 @@ export default function MessagesFlowLayout({ onEditNodeMessage}) {
           anchor="right"
         >
           <Toolbar />
-
+          <aside>
           {/* Shows Nodes Panel in normal mode, In Edit Mode shows the Node Editor */}
           {!nodeEditMode ? <NodesPanel
             nodeEditMode ={nodeEditMode}
@@ -103,6 +103,8 @@ export default function MessagesFlowLayout({ onEditNodeMessage}) {
             setNodeEditMode ={setNodeEditMode}
             setNodes ={setNodes}
           />}
+         </aside>
+
         </Drawer>
       </Box>
 

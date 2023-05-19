@@ -27,7 +27,7 @@ export default function NodeButton({nodeType, nodeText, icon}) {
           alignItems : "center",
           display : "flex",
           flexDirection : "column",
-          cursor : "pointer"
+          cursor : "grab"
         }} 
         // component={"button"}
         onDragStart={(event) => onDragStart(event, nodeType)}

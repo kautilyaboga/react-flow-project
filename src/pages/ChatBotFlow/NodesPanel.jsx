@@ -8,7 +8,7 @@ import NodeButton from "./NodeButton";
 
 export default function NodesPanel() {
   return (
-    <aside>
+    // <aside>
       <Grid
         sx={{
           boxShadow: customBoxShadow,
@@ -49,6 +49,6 @@ export default function NodesPanel() {
           /> */}
         </Grid>
       </Grid>
-    </aside>
+    // </aside>
   );
 }

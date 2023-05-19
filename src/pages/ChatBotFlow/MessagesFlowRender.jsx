@@ -51,7 +51,7 @@ const MessagesFlowRender = ({nodes,
       setNotificationOpen(true)
       setNotificationData({
         severity : "error",
-        message : 'Source Connection Already Exists',
+        message : 'Source Handle already has an edge connected to it.',
       })
       return () => {}
     }
