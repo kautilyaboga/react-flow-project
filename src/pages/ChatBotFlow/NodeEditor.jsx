@@ -5,13 +5,10 @@ import { customBoxShadow } from "../../Data/utils";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import IconButton from "@material-ui/core/IconButton";
 import NodeTypes from "../../Data/Constants/NodeTypes";
-import TextField from "@mui/material/TextField";
-import Typography from '@mui/material/Typography';
 import TextEditor from "./NodeEditors/TextEditor";
 
 export default function NodeEditor({ nodeEditData, setNodeEditMode, setNodes }) {
-  console.log(nodeEditData);
-  // console.log(nodeEditData?.at(-1));
+  // console.log(nodeEditData);
 
   function onBackClick() {
     setNodeEditMode(false);
@@ -27,62 +24,41 @@ export default function NodeEditor({ nodeEditData, setNodeEditMode, setNodes }) 
   }
 
   return (
-    <React.Fragment>
-      <Grid sx={{ boxShadow: customBoxShadow, justifyContent : "center", pb:2, }} container>
-
-        <Grid item xs={12}>
-          <Box
-            sx={{
-              background: "white",
-              borderRadius: "0 0 10px 10px",
-              justifyContent: "space-between",
-              p: 1,
-              pt: 3,
-              // boxShadow: customBoxShadow,
-              display: "flex",
-            }}
-            // item
-            // container
-          >
-            <Box>
-              <IconButton size="small" onClick={onBackClick}>
-                <ArrowBackIcon fontSize="small" />
-              </IconButton>
-            </Box>
-            <Box>Message</Box>
-            <div></div>
+    <Grid sx={{ boxShadow: customBoxShadow, justifyContent : "center", pb:2, }} container>
+      <Grid item xs={12}>
+        <Box
+          sx={{
+            background: "white",
+            borderRadius: "0 0 10px 10px",
+            justifyContent: "space-between",
+            p: 1,
+            pt: 3,
+            display: "flex",
+          }}
+        >
+          <Box>
+            <IconButton size="small" onClick={onBackClick}>
+              <ArrowBackIcon fontSize="small" />
+            </IconButton>
           </Box>
-        </Grid>
-
-        <Grid 
-         component="form"
-        item>
-          {NodeTypes.text === nodeEditData?.type ? (
-            <React.Fragment>
-              <TextEditor
-                nodeEditData={nodeEditData}
-                setNodes ={setNodes}
-              />
-
-              {/* <TextField
-                autoFocus={true}
-                defaultValue={nodeEditData?.at(-1)?.data?.name}
-                minRows={3}
-                placeholder=" Write some message"
-                // onChange={() => {}}
-                // onChange={onEditNodeMessage}
-                label="Text"
-                multiline
-                id="filled-multiline-static"
-                variant ="filled"
-                sx={{background : "#f0f2f2"}}
-                value={nodeEditData?.at(-1)?.data?.name}
-              /> */}
-            </React.Fragment>
-          ) : null}
-        </Grid>
-
+          <Box>Message</Box>
+          <div></div>
+        </Box>
       </Grid>
-    </React.Fragment>
+      {/* Add different node editors here based on the Message type */}
+      <Grid 
+      component="form"
+      item>
+        {NodeTypes.text === nodeEditData?.type ? (
+          <React.Fragment>
+            <TextEditor
+              nodeEditData={nodeEditData}
+              setNodes ={setNodes}
+            />
+          </React.Fragment>
+        ) : null}
+      </Grid>
+
+    </Grid>
   );
 }

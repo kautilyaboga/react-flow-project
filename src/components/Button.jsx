@@ -21,7 +21,6 @@ cursor: pointer;
 
 const Button = ({name ,onClick,type,style}) => {
 
-
   const preStyle = {minWidth : "100px", maxWidth : '150px'}
 
     return (

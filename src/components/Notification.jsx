@@ -10,7 +10,6 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 export default function Notification({ open, setOpen, message, severity }) {
-  // console.log(severity);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {

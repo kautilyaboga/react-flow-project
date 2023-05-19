@@ -1,18 +1,11 @@
 import React from 'react';
 import 'reactflow/dist/style.css';
 import MessagesFlowLayout from "./MessagesFlowLayout"
-import MessagesFlowRender from "./MessagesFlowRender"
+
+// Documentation
+// Add any new node types in NodeTypes.js. Use only the constants for validation.
 
 export default function ChatbotFlow() {
-
-
     return <MessagesFlowLayout/>
-    //  <div style={{ width: '100vw', height: '85vh' }}>
-    //   <MessagesFlowRender
-    //     setNodeEditData ={setNodeEditData}
-    //     setNodeEditMode ={setNodeEditMode}
-    //   />
-    // </div>
-  // </MessagesFlowLayout>;
 }
 

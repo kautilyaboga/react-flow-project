@@ -2,8 +2,6 @@ import React, { useState, useRef, useCallback, useMemo } from 'react';
 import ReactFlow, {
   ReactFlowProvider,
   addEdge,
-  useNodesState,
-  useEdgesState,
   Controls,
   Background,
   BackgroundVariant,
@@ -20,19 +18,24 @@ const nodeTypes = {
 };
 
 let id = 0;
-const getId = () => `dndnode_${id++}`;
+const getId = () => `node_${id++}`;
 
 
-const MessagesFlowRender = ({nodes, setNodes, onNodesChange, setNodeEditData, setNodeEditMode}) => {
+const MessagesFlowRender = ({nodes,
+  setNodes, 
+  onNodesChange, 
+  setNodeEditData,
+  edges,
+  setEdges,
+  onEdgesChange,
+  setNodeEditMode,
+  notificationOpen,
+  setNotificationOpen,
+  notificationData,
+  setNotificationData,
+}) => {
   const reactFlowWrapper = useRef(null);
-  // const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
-  const [notificationOpen, setNotificationOpen] = useState(false);
-  const [notificationData, setNotificationData] = useState({
-    severity : "",
-    message : '',
-  });
 
   // const nodeTypes = useMemo(() => ({ messageNode: TextNode }), []);
 
@@ -78,13 +81,14 @@ const MessagesFlowRender = ({nodes, setNodes, onNodesChange, setNodeEditData, se
         y: event.clientY - reactFlowBounds.top,
       });
 
+      // If we add any new type of nodes, please write the logic here on what the new node data and id will look like
       let newNode
       if (type === NodeTypes?.text) {
         newNode = {
           id: getId(),
           type,
           position,
-          data: { name: `Write Some Message` },
+          data: { name: `Write Some Message ...` },
         };
       }
 
@@ -95,7 +99,7 @@ const MessagesFlowRender = ({nodes, setNodes, onNodesChange, setNodeEditData, se
 
 
   function onSelectionChange(params) {
-    console.log(params?.nodes);
+    // console.log(params?.nodes);
     // console.log(params?.edges);
     if (params?.nodes?.length) {
       setNodeEditMode(true)
@@ -106,11 +110,6 @@ const MessagesFlowRender = ({nodes, setNodes, onNodesChange, setNodeEditData, se
       // setNodeEditData({})
     }
   } 
-
-  function onSelect(params) {
-    console.log(params);
-  }
-
 
   return (
     <React.Fragment>
@@ -129,7 +128,6 @@ const MessagesFlowRender = ({nodes, setNodes, onNodesChange, setNodeEditData, se
             nodeTypes = {nodeTypes}
             fitView
             onSelectionChange = {onSelectionChange}
-            onSelect={onSelect}
           >
             <Background variant={BackgroundVariant.Dots} />
             <Controls />
