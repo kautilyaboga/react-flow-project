@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
 import Typography from '@mui/material/Typography';
-import { customBoxShadow } from "../Data/utils";
+import { customBoxShadow } from "../../../Data/utils";
 
 // Please wrap all Nodes in Memos as it is suggested by react-flow to be efficient.
 
