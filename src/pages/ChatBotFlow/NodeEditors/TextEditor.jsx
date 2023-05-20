@@ -30,7 +30,7 @@ export default function TextEditor({ nodeEditData, setNodes }) {
       multiline
       id="filled-multiline-static"
       variant="filled"
-      sx={{ background: "#f0f2f2" }}
+      sx={{ background: "#f0f2f2", width : "100%" }}
       value={nodeEditData?.data?.name}
     />
   );

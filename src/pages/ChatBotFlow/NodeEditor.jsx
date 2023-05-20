@@ -55,7 +55,9 @@ export default function NodeEditor({ nodeEditData, setNodeEditMode, setNodes }) 
       {/* Add different node editors here based on the Message type */}
       <Grid 
       component="form"
-      item>
+      item
+      xs={12}
+      >
         {NodeTypes.text === nodeEditData?.type ? (
           <React.Fragment>
             <TextEditor
