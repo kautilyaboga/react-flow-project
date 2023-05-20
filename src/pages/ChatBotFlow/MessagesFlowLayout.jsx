@@ -16,10 +16,13 @@ const initialNodes = [
   {
     id: '1',
     type: 'textNode',
-    data: { name: 'input node' },
+    data: { name: 'Message Node' },
     position: { x: 250, y: 5 },
   },
 ];
+
+const drawerWidth = 200;
+const navBarHeight = 64;
 
 export default function MessagesFlowLayout({ onEditNodeMessage}) {
 
@@ -54,10 +57,21 @@ export default function MessagesFlowLayout({ onEditNodeMessage}) {
         {/* Main Content - The Nodes are Rendered Here */}
         <Box
           component="main"
-          sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+          sx={{ 
+            flexGrow: 1, 
+            bgcolor: 'background.default', 
+            p: 3,
+            height: `calc(100vh - ${navBarHeight}px)`,
+            // Can use marginTop or the toolbar
+            // marginTop : `${navBarHeight}px`, 
+            p : 0,
+          }}
         >
           <Toolbar />
-          <div style={{ width: '100vw', height: '85vh' }}>
+          <Box sx={{ 
+            width: '100vw',
+            height: '100%',
+            }}>
             <MessagesFlowRender
               setNodeEditData ={setNodeEditData}
               setNodeEditMode ={setNodeEditMode}
@@ -72,18 +86,18 @@ export default function MessagesFlowLayout({ onEditNodeMessage}) {
               notificationData ={notificationData}
               setNotificationData ={setNotificationData}
             />
-          </div>
+          </Box>
         </Box>
 
         {/* Side Panel / Nodes Panel*/}
         <Drawer
           sx={{
             width: "100%",
-            minWidth: "240",
+            minWidth: `${drawerWidth}px`,
             flexShrink: 0,
             '& .MuiDrawer-paper': {
               width : "20%",
-              minWidth: "240",
+              minWidth: `${drawerWidth}px`,
               boxSizing: 'border-box',
             },
           }}
@@ -104,7 +118,6 @@ export default function MessagesFlowLayout({ onEditNodeMessage}) {
             setNodes ={setNodes}
           />}
          </aside>
-
         </Drawer>
       </Box>
 

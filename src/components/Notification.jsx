@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import MuiAlert from "@mui/material/Alert";
+import MuiAlert from '@mui/material/Alert';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -39,9 +39,9 @@ export default function Notification({ open, setOpen, message, severity }) {
       action={action}
       anchorOrigin={{ horizontal: "center", vertical: "top" }}
     >
-      <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>
-        {message}
-      </Alert>
+      <Alert variant="filled" onClose={handleClose} severity={severity} sx={{ width: '100%' }}>
+          {message}
+        </Alert>
     </Snackbar>
   );
 }

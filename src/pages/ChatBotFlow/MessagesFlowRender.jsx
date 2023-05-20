@@ -9,7 +9,6 @@ import ReactFlow, {
 import 'reactflow/dist/style.css';
 import TextNode from './Nodes/TextNode';
 import '../../index.css';
-import Notification from '../../components/Notification';
 import NodeTypes from '../../Data/Constants/NodeTypes';
 
 
@@ -135,13 +134,6 @@ const MessagesFlowRender = ({nodes,
         </div>
       </ReactFlowProvider>
     </div>
-
-    <Notification
-      open={notificationOpen}
-      setOpen ={setNotificationOpen}
-      severity ={notificationData?.severity}
-      message ={notificationData?.message}
-    />
     </React.Fragment>
   );
 };
