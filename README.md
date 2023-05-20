@@ -1,18 +1,22 @@
-# Live On Vercel :
-Link : (https://react-flow-project.vercel.app/)
-
+# Chat Flow Builder
 A fun chat flow builder built in React using React Flow Library and Material UI.
 
-Library Links : 
-1. React Flow : 
-Website : (https://reactflow.dev/)
-GitHub : (https://github.com/wbkd/react-flow)
+# Live On Vercel : 
+Live Link : https://react-flow-project.vercel.app/
 
-2. Material UI : 
-Website : (https://mui.com/)
-GitHub : (https://github.com/mui)
 
-# Working with the Repo - Created using "Create React App". Providing Documentation below for It.
+Library Links :  
+1. React Flow :  
+Website : https://reactflow.dev/  
+GitHub : https://github.com/wbkd/react-flow  
+
+2. Material UI :  
+Website : https://mui.com/  
+GitHub : https://github.com/mui  
+
+# Working with the Repo : 
+Created using "Create React App". Providing Documentation below for It.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
