@@ -80,7 +80,8 @@ const MessagesFlowRender = ({nodes,
         y: event.clientY - reactFlowBounds.top,
       });
 
-      // If we add any new type of nodes, please write the logic here on what the new node data and id will look like
+      // If we add any new type of nodes, 
+      // please write the logic here on what the new node data and id will look like
       let newNode
       if (type === NodeTypes?.text) {
         newNode = {

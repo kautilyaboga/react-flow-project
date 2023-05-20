@@ -12,6 +12,7 @@ import NodesPanel from './NodesPanel';
 import NavBar from './NavBar';
 import Notification from '../../components/Notification';
 
+// Added an Inital Node to Show on the Screen
 const initialNodes = [
   {
     id: '1',
@@ -21,8 +22,8 @@ const initialNodes = [
   },
 ];
 
-const drawerWidth = 200;
-const navBarHeight = 64;
+const drawerWidth = 200; // Defining the space used by side bar.
+const navBarHeight = 64; // Rendering main body correctly.
 
 export default function MessagesFlowLayout({ onEditNodeMessage}) {
 
@@ -35,7 +36,7 @@ export default function MessagesFlowLayout({ onEditNodeMessage}) {
   });
   
   //  Keeping the nodes and edges data at higher level so that 
-  // 1. We can give nodes data to NodeEditor.
+  // 1. We can give and manipulate nodes data in NodeEditor.
   // 2. Check edges while clicking on save changes.
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
@@ -89,7 +90,7 @@ export default function MessagesFlowLayout({ onEditNodeMessage}) {
           </Box>
         </Box>
 
-        {/* Side Panel / Nodes Panel*/}
+        {/* Nodes Panel / Side Panel*/}
         <Drawer
           sx={{
             width: "100%",
