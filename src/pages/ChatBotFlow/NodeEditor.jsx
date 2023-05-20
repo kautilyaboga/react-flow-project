@@ -14,10 +14,10 @@ export default function NodeEditor({ nodeEditData, setNodeEditMode, setNodes }) 
     setNodeEditMode(false);
     setNodes((prevState)=>{
       return prevState?.map((node)=>{
-        console.log(node);
+        // console.log(node);
         const newNode ={...node};
         newNode.selected = false;
-        console.log(newNode);
+        // console.log(newNode);
         return newNode
       })
     })

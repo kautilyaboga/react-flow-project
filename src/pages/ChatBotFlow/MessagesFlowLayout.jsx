@@ -15,7 +15,7 @@ import Notification from '../../components/Notification';
 // Added an Inital Node to Show on the Screen
 const initialNodes = [
   {
-    id: '1',
+    id: 'sampleNode',
     type: 'textNode',
     data: { name: 'Message Node' },
     position: { x: 250, y: 5 },

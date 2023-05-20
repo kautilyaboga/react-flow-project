@@ -9,7 +9,7 @@ import { customBoxShadow } from "../../../Data/utils";
 
 // Please wrap all Nodes in Memos as it is suggested by react-flow to be efficient.
 
-function TextNode({ data, selected }) {
+function TextNode({ id, data, selected }) {
   return (
       <Grid
         sx={{ 
@@ -61,6 +61,7 @@ function TextNode({ data, selected }) {
           xs={12}
           item
           container
+          id={`${id}-message`}
         >
           {data.name}
         </Grid>
