@@ -38,6 +38,12 @@ export default function TextEditor({ nodeEditData, setNodes }) {
       variant="filled"
       sx={{ background: "#f0f2f2", width : "100%" }}
       value={nodeEditData?.data?.name}
+      // onFocus is used to get the cusor to the end of the textfield.
+      onFocus={(e) =>
+        e.currentTarget.setSelectionRange(
+        e.currentTarget.value.length,
+        e.currentTarget.value.length
+      )}
     />
   );
 }
